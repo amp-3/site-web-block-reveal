@@ -48,6 +48,88 @@
       margin-top: 10px;
       font-size: 14px;
     }
+    
+    /* モバイル向けレスポンシブスタイル */
+    @media (max-width: 768px) and (orientation: portrait) {
+      #game-container {
+        flex-direction: column;
+      }
+      
+      #shooting-game-area {
+        width: 100%;
+        height: 60%;
+      }
+      
+      #block-reveal-area {
+        width: 100%;
+        height: 40%;
+      }
+      
+      .controls {
+        display: none; /* モバイルではボタンを非表示 */
+      }
+      
+      .game-ui {
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 1024px) and (orientation: landscape) {
+      #shooting-game-area {
+        width: 100%;
+      }
+      
+      #block-reveal-area {
+        display: none; /* 横画面ではゲーム画面のみ表示 */
+      }
+      
+      .controls {
+        bottom: 10px;
+      }
+      
+      .controls button {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+      
+      .controls .info {
+        font-size: 12px;
+      }
+    }
+    
+    /* タッチデバイス向け調整 */
+    @media (pointer: coarse) {
+      .controls button {
+        padding: 10px 20px;
+        min-width: 120px;
+        min-height: 44px; /* Apple推奨の最小タップ領域 */
+      }
+    }
+    
+    /* 画面回転の推奨メッセージ */
+    @media (max-width: 768px) and (orientation: portrait) {
+      body::before {
+        content: "横画面での プレイを推奨";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1000;
+        font-size: 18px;
+        text-align: center;
+        pointer-events: none;
+        animation: fadeOut 3s forwards;
+      }
+      
+      @keyframes fadeOut {
+        0%, 70% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+    }
   </style>
   <script type="module" crossorigin src="./assets/game_shooting.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/BaseInputHandler.js">
