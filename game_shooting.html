@@ -80,7 +80,11 @@
       }
       
       #block-reveal-area {
-        display: none; /* 横画面ではゲーム画面のみ表示 */
+        position: absolute;
+        left: -9999px; /* 画面外に配置するが、要素は存在させる */
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
       }
       
       .controls {
